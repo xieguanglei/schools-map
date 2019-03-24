@@ -2,6 +2,7 @@ declare const BMap;
 declare const BMapLib;
 declare const $;
 declare const bootbox;
+declare const clipboard;
 declare const BMAP_DRAWING_POLYGON;
 
 interface IShape {
@@ -279,14 +280,19 @@ function saveDrawingData() {
 }
 
 function outputDraw() {
-    bootbox.alert({
-        animate: false,
-        title: '导出',
-        message: JSON.stringify(drawingData),
-        callback: () => {
 
-        }
+    clipboard.writeText(JSON.stringify(drawingData)).then(function () {
+
+        bootbox.alert({
+            animate: false,
+            title: '导出',
+            message: '数据已经复制到你的剪切板，即将跳转到 Issue 页提交数据。',
+            callback: () => {
+                open('https://github.com/xieguanglei/schools-map/issues/new');
+            }
+        })
     })
+
 }
 
 

@@ -22,7 +22,7 @@
             height: 100%
         }
 
-        .x-link:hover{
+        .x-link:hover {
             cursor: pointer;
         }
     </style>
@@ -45,8 +45,8 @@
                         <span class="nav-link">区域选择：</span>
                     </li>
                     <li id="region-container" class="nav-item dropdown">
-                        <span id="region-current" class="nav-link dropdown-toggle x-link" id="navbarDropdown" role="button"
-                            data-toggle="dropdown">
+                        <span id="region-current" class="nav-link dropdown-toggle x-link" id="navbarDropdown"
+                            role="button" data-toggle="dropdown">
                             加载中...
                         </span>
                         <div id="region-list" class="dropdown-menu">
@@ -62,7 +62,7 @@
                         <span id="start-draw" class="nav-link x-link">开始绘图</span>
                     </li>
                     <li class="nav-item active">
-                        <span id="ouput-draw" class="nav-link x-link">导出绘图</span>
+                        <span id="output-draw" class="nav-link x-link">导出绘图</span>
                     </li>
                     <li class="nav-item active">
                         <span id="clear-draw" class="nav-link x-link">清除绘图</span>
@@ -71,7 +71,7 @@
                         <span class="nav-link"> | </span>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" target="_blank" href="https://www.baidu.com">关于</a>
+                        <a class="nav-link" target="_blank" href="https://github.com/xieguanglei/schools-map/">关于</a>
                     </li>
                 </ul>
             </div>
@@ -79,7 +79,8 @@
     </div>
     <div id="container" style="height: calc(100vh - 58px)"></div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"
+        crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
@@ -90,6 +91,9 @@
         src="https://api.map.baidu.com/api?v=2.0&ak=3b2c8bc0f9070adec2985f4de6611184"></script>
     <script type="text/javascript"
         src="https://api.map.baidu.com/library/DrawingManager/1.4/src/DrawingManager_min.js"></script>
+
+    <script src="https://unpkg.com/clipboard-polyfill@2.7.0/build/clipboard-polyfill.js"></script>
+
     <script type="text/javascript" src="./index.js"></script>
 </body>
 

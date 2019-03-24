@@ -184,12 +184,15 @@ function saveDrawingData() {
     }
 }
 function outputDraw() {
-    bootbox.alert({
-        animate: false,
-        title: '导出',
-        message: JSON.stringify(drawingData),
-        callback: function () {
-        }
+    clipboard.writeText(JSON.stringify(drawingData)).then(function () {
+        bootbox.alert({
+            animate: false,
+            title: '导出',
+            message: '数据已经复制到你的剪切板，即将跳转到 Issue 页提交数据。',
+            callback: function () {
+                open('https://github.com/xieguanglei/schools-map/issues/new');
+            }
+        });
     });
 }
 function ajax(url, onSuccess, onError) {
