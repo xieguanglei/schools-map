@@ -14,7 +14,10 @@
     "webpack-dev-middleware": "^3.6.1",
     "webpack-dev-server": "^3.2.1"
   },
-  "scripts": {},
+  "scripts": {
+    "dev": "node ./dev/dev.js",
+    "build": "node ./dev/build.js"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/xieguanglei/schools-map.git"

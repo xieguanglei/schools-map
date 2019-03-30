@@ -1,6 +1,6 @@
 # 学区房地图
 
-[学区房地图](https://github.com/xieguanglei/schools-map) 是一个用来查看学区划分的小工具。
+[学区房地图](https://xieguanglei.github.io/schools-map/) 是一个用来查看学区划分的小工具。
 
 ## 如何贡献
 

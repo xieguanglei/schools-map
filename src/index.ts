@@ -1,16 +1,17 @@
 import "./index.less";
 import { jQuery as $ } from "./tiny-libs/jquery";
+import { DialogManager } from "./tiny-libs/dialog";
 import { DataManager } from "./data";
 import { PageManager } from "./page";
-import { DialogManager } from "./tiny-libs/dialog";
-import { wait } from "./tiny-libs/wait";
 import { MapManager } from "./map";
 import { DrawManager, IDrawData } from "./draw";
+import { Router } from "./router";
 
 $(document).ready(init);
 
 async function init() {
 
+    const router = new Router();
     const dialogManager = new DialogManager();
     const dataManager = new DataManager();
     const pageManager = new PageManager();
@@ -21,50 +22,32 @@ async function init() {
         function (data: IDrawData) { pageManager.setDrawStatus(data); }
     );
 
-    const regions = await dataManager.regionIndexList();
-    pageManager.fillRegions(regions);
-
-    const region = await dataManager.firstRegion();
-    pageManager.setCurrentRegion(region);
-
-    mapManager.center(region.center[0], region.center[1]);
-    mapManager.showRegion(region);
-
     pageManager.onStartDraw(() => drawManager.startDraw());
     pageManager.onUndoDraw(() => drawManager.undoDraw());
     pageManager.onClearDraw(() => drawManager.clearDraw());
     pageManager.onOutputDraw(() => drawManager.outputDraw());
 
-    // const regionData = {};
+    const regions = await dataManager.regionIndexList();
+    pageManager.fillRegions(regions);
 
-    // const $regionList = $('#region-list');
+    router.onInit(async (regionName?: string) => {
+        if (!regionName) {
+            const region = await dataManager.firstRegion();
+            router.route(region.id);
+        } else {
+            await initWithRegion(regionName);
+        }
+    });
 
-    // const $regionContainer = $('#region-container');
-    // const $regionCurrent = $('#region-current');
-    // const $drawState = $('#draw-state');
-    // const $startDraw = $('#start-draw');
-    // const $outputDraw = $('#output-draw');
-    // const $clearDraw = $('#clear-draw');
+    router.onRoute(initWithRegion);
 
-    // const text = await ajax('./data/index.json');
-
-    // const data = JSON.parse(text) as { name: string, id: string }[];
-
-    // console.log(data);
-
-    // data.forEach(function (item) {
-    //     regionData[item.id] = item;
-    //     const $li = $(`<a class="dropdown-item" href="#${item.id}">${item.name}</a>`);
-    //     $regionList.append($li);
-    // });
-
-    // if (location.hash) {
-    //     onHashChange();
-    // } else {
-    //     if (data.length > 0) {
-    //         const item = data[0];
-    //         location.hash = item.id;
-    //     }
-    // }
-
+    async function initWithRegion(regionName: string) {
+        const region = await dataManager.specifiedRegion(regionName);
+        if (region) {
+            pageManager.setCurrentRegion(region);
+            mapManager.clear();
+            mapManager.center(region.center[0], region.center[1]);
+            mapManager.showRegion(region);
+        }
+    }
 }

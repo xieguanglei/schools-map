@@ -4,38 +4,10 @@
 <head>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-
-    <!-- <title>学区房地图</title> -->
-    <!-- 
-    <style type="text/css">
-        html {
-            height: 100%
-        }
-
-        body {
-            height: 100%;
-            margin: 0px;
-            padding: 0px
-        }
-
-        #container {
-            height: 100%
-        }
-
-        .x-link:hover {
-            cursor: pointer;
-        }
-    </style> -->
-    <!-- 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://api.map.baidu.com/library/DrawingManager/1.4/src/DrawingManager_min.css" /> -->
-
-
+    <title>学区房地图</title>
 </head>
 
 <body>
-
     <div id="header" class="navbar">
         <div class="navbar-item">学区房地图</div>
         <div class="navbar-item nav-flag-region">
@@ -44,11 +16,11 @@
             </div>
         </div>
         <div class="navbar-splitter"></div>
-        <div id="status-draw" class="navbar-item"></div>
-        <div id="start-draw" class="navbar-item">开始绘图</div>
-        <div id="undo-draw" class="navbar-item">撤回绘图</div>
-        <div id="output-draw" class="navbar-item">导出绘图</div>
-        <div id="clear-draw" class="navbar-item">清除绘图</div>
+        <div id="status-draw" class="navbar-item">绘图工具：</div>
+        <div id="start-draw" class="navbar-item icon-edit"><div class="title">绘图</div></div>
+        <div id="undo-draw" class="navbar-item icon-undo"><div class="title">撤回</div></div>
+        <div id="output-draw" class="navbar-item icon-output"><div class="title">导出</div></div>
+        <div id="clear-draw" class="navbar-item icon-clear"><div class="title">清除</div></div>
         <div class="navbar-splitter"></div>
         <div id="about" class="navbar-item">
             <a href="https://github.com/xieguanglei/schools-map" target="_blank">关于</a>
@@ -70,19 +42,9 @@
 
     <div id="container"></div>
 
-    
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/bootbox@5.0.1/dist/bootbox.min.js"></script> -->
-
     <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=3b2c8bc0f9070adec2985f4de6611184"></script>
     <script type="text/javascript"
         src="https://api.map.baidu.com/library/DrawingManager/1.4/src/DrawingManager_min.js"></script>
-    <!-- <script src="https://unpkg.com/clipboard-polyfill@2.7.0/build/clipboard-polyfill.js"></script> -->
 
     <script type="text/javascript" src="./index.js"></script>
 </body>

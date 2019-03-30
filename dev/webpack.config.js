@@ -3,7 +3,7 @@ const path = require('path');
 const config = {
     devtool: 'inline-source-map',
     entry: { index: './src/index.ts' },
-    output: { filename: `[name].js` },
+    output: { path: path.resolve(__dirname, '../'), filename: `[name].js` },
     module: {
         rules: [{
             test: /\.ts$/,

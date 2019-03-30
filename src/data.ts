@@ -62,4 +62,14 @@ export class DataManager {
         return null;
     }
 
+    async specifiedRegion(specifiedId: string): Promise<IRegionIndex & IRegionDetail> {
+        for (const [id, regionIndex] of this.data.index) {
+            if (specifiedId === id) {
+                const regionDetail = await this.regionDetail(id);
+                return { ...regionIndex, ...regionDetail };
+            }
+        }
+        return null;
+    }
+
 }

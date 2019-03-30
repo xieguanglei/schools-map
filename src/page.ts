@@ -29,7 +29,7 @@ export class PageManager {
         if (data) {
             this.$statucDraw.text(`绘制中：${data.name}`);
         } else {
-            this.$statucDraw.text('');
+            this.$statucDraw.text('绘图');
         }
     }
 
