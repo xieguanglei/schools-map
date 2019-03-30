@@ -31,6 +31,9 @@ async function init() {
     mapManager.showRegion(region);
 
     pageManager.onStartDraw(() => drawManager.startDraw());
+    pageManager.onUndoDraw(() => drawManager.undoDraw());
+    pageManager.onClearDraw(() => drawManager.clearDraw());
+    pageManager.onOutputDraw(() => drawManager.outputDraw());
 
     // const regionData = {};
 

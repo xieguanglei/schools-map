@@ -34,6 +34,20 @@ export class MapManager {
     static shapePolygonStyle = { strokeWeight: 2, strokeOpacity: 0.5 };
     private drawShape(value: string, title: string, markerStr?: string): void {
 
+        const { marker, polygon } = MapManager.drawSchoolShape(this.bMap, value, title, markerStr);
+
+        this.overlays.push(marker);
+        this.overlays.push(polygon);
+    }
+
+    clear(): void {
+        for (const overlay of this.overlays) {
+            this.bMap.removeOverlay(overlay);
+        }
+    }
+
+    static drawSchoolShape(bMap: any, value: string, title: string, markerStr?: string): { marker: any, polygon: any } {
+
         const data = value.split(';').map(s => s.split(',').map(Number));
 
         let center: number[] = null;
@@ -50,7 +64,7 @@ export class MapManager {
         const marker = new BMap.Marker(
             new BMap.Point(center[0], center[1])
         );
-        this.bMap.addOverlay(marker);
+        bMap.addOverlay(marker);
         const label = new BMap.Label(title, { offset: new BMap.Size(20, -10) });
         marker.setLabel(label);
 
@@ -58,15 +72,8 @@ export class MapManager {
             data.map(p => new BMap.Point(p[0], p[1])),
             MapManager.shapePolygonStyle
         );
-        this.bMap.addOverlay(polygon);
+        bMap.addOverlay(polygon);
 
-        this.overlays.push(marker);
-        this.overlays.push(polygon);
-    }
-
-    clear(): void {
-        for (const overlay of this.overlays) {
-            this.bMap.removeOverlay(overlay);
-        }
+        return { marker, polygon };
     }
 }

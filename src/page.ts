@@ -9,12 +9,9 @@ export class PageManager {
     $statucDraw = $('#status-draw');
 
     $buttonStartDraw = $('#start-draw');
+    $buttonUndoDraw = $('#undo-draw');
     $buttonOutputDraw = $('#output-draw');
     $buttonClearDraw = $('#clear-draw');
-
-
-    // $regionContainer = $('#region-container');
-    // $drawState = $('#draw-state');
 
     fillRegions(allRegions: Map<string, IRegionIndex>): void {
 
@@ -29,10 +26,15 @@ export class PageManager {
     }
 
     setDrawStatus(data: IDrawData) {
-        this.$statucDraw.text(`绘制中：${data.name}`);
+        if (data) {
+            this.$statucDraw.text(`绘制中：${data.name}`);
+        } else {
+            this.$statucDraw.text('');
+        }
     }
 
     onStartDraw(fn: () => void): void { this.$buttonStartDraw.click(fn); }
+    onUndoDraw(fn: () => void): void { this.$buttonUndoDraw.click(fn); }
     onOutputDraw(fn: () => void): void { this.$buttonOutputDraw.click(fn); }
     onClearDraw(fn: () => void): void { this.$buttonClearDraw.click(fn); }
 }
