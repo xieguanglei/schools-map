@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+        "outDir": "./dist/",
+        "sourceMap": true,
+        "noImplicitAny": false,
+        "module": "commonjs",
+        "target": "es6",
+        "downlevelIteration": true,
+        "lib": ["es6", "dom"]
+    },
+    "include": [
+        "src/**/*.ts",
+        "demo/*.ts"
+    ]
+}

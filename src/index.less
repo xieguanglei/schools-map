@@ -1,0 +1,135 @@
+@color-blue: #2f3542;
+@color-light-blue: #57606f;
+@color-light: #f1f2f6;
+@color-golden: #eccc68;
+
+@height-header: 58px;
+@height-border: 3px;
+
+@border-style: @height-border solid @color-light-blue;
+@font-family: 'Verdana', 'Hiragino Sans GB', 'Microsoft Yahei', sans-serif;
+
+
+body {
+    margin: 0px;
+    padding: 0px;
+    font-family: @font-family;
+}
+
+#header{
+    height: @height-header; 
+    border-bottom: @border-style;
+    background: @color-blue;
+    color: @color-light;
+}
+#container{
+    height: calc(100vh - @height-header - @height-border);
+}
+
+.navbar{
+    display: flex;
+    line-height: 58px;
+    .navbar-item{
+        margin: 0px 30px;
+        &:hover{
+            cursor: pointer;
+            .nav-menu{
+                display: flex;
+            }
+        }
+        &.nav-flag-region{
+            min-width: 200px;
+            text-align: left;
+        }
+        .nav-menu{
+            position: relative;
+            z-index: 100;
+            display: none;
+            flex-direction: column;
+            padding: 0 20px;
+            background: @color-blue;
+            border-bottom: @border-style;
+            border-right: @border-style;
+            a{
+                line-height: 42px;
+                .link;
+            }
+        }
+        a{
+            .link;
+        }
+
+        .link{
+            text-decoration: none;
+            color: @color-light;
+            &:hover{
+                color:@color-golden;
+            }
+        }
+    }
+    .navbar-splitter{
+        margin: 12px 0;
+        width: 1px;
+        background: #aaa;
+    }
+}
+
+@dialog-width: 400px;
+@dialog-height: 140px;
+@dialog-padding: 20px;
+@dialog-button-height: 40px;
+
+.dialog{
+    
+    display: none;
+    border-radius: 6px;
+    width: @dialog-width;
+    height: @dialog-height;
+    padding: @dialog-padding;
+    position: absolute;
+    z-index: 100;
+    left: calc(50vw - @dialog-width/2 - @dialog-padding);
+    top: calc(50vh - @dialog-height/2 - @dialog-padding);
+    border-right: @border-style;
+    border-bottom: @border-style;
+
+    background: @color-blue;
+    color: @color-light;
+
+    .dialog-message{
+        height: calc((@dialog-height - @dialog-button-height)/2);
+    }
+    .dialog-input-container{
+        height: calc((@dialog-height - @dialog-button-height)/2);
+        text-align: center;
+        input{
+            width: calc(@dialog-width - 20px);
+            line-height: 28px;
+            font-family: @font-family;
+            font-size: 16px;
+            text-align: center;
+        }
+    }
+    .dialog-buttons{
+        display: flex;
+        flex-direction: row-reverse;
+
+        .button{
+            border-radius: 5px;
+            padding: 4px 14px;
+            margin: 0 10px;
+            background: @color-light;
+            color: @color-blue;
+            cursor: pointer;
+            &:hover{
+                color: @color-golden;
+            }
+        }
+        .cancel{
+            .button;
+        }
+        .confirm{
+            .button;
+        }
+    }
+}

@@ -5,8 +5,8 @@
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-    <title>学区房地图</title>
-
+    <!-- <title>学区房地图</title> -->
+    <!-- 
     <style type="text/css">
         html {
             height: 100%
@@ -25,74 +25,63 @@
         .x-link:hover {
             cursor: pointer;
         }
-    </style>
-
+    </style> -->
+    <!-- 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://api.map.baidu.com/library/DrawingManager/1.4/src/DrawingManager_min.css" />
+    <link rel="stylesheet" href="https://api.map.baidu.com/library/DrawingManager/1.4/src/DrawingManager_min.css" /> -->
 
 
 </head>
 
 <body>
-    <div id="header" style="height: 58px; border-bottom: 2px solid #aaa;">
 
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="/">学区房地图</a>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <span class="nav-link">区域选择：</span>
-                    </li>
-                    <li id="region-container" class="nav-item dropdown">
-                        <span id="region-current" class="nav-link dropdown-toggle x-link" id="navbarDropdown"
-                            role="button" data-toggle="dropdown">
-                            加载中...
-                        </span>
-                        <div id="region-list" class="dropdown-menu">
-                        </div>
-                    </li>
-                    <li class="nav-item active">
-                        <span class="nav-link"> | </span>
-                    </li>
-                    <li class="nav-item active">
-                        <span id="draw-state" class="nav-link x-link"></span>
-                    </li>
-                    <li class="nav-item active">
-                        <span id="start-draw" class="nav-link x-link">开始绘图</span>
-                    </li>
-                    <li class="nav-item active">
-                        <span id="output-draw" class="nav-link x-link">导出绘图</span>
-                    </li>
-                    <li class="nav-item active">
-                        <span id="clear-draw" class="nav-link x-link">清除绘图</span>
-                    </li>
-                    <li class="nav-item active">
-                        <span class="nav-link"> | </span>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" target="_blank" href="https://github.com/xieguanglei/schools-map/">关于</a>
-                    </li>
-                </ul>
+    <div id="header" class="navbar">
+        <div class="navbar-item">学区房地图</div>
+        <div class="navbar-item nav-flag-region">
+            <span id="current-region">区域选择:加载中</span>
+            <div id="region-list" class="nav-menu">
             </div>
-        </nav>
+        </div>
+        <div class="navbar-splitter"></div>
+        <div id="status-draw" class="navbar-item"></div>
+        <div id="start-draw" class="navbar-item">开始绘图</div>
+        <div id="ouput-draw" class="navbar-item">导出绘图</div>
+        <div id="clear-draw" class="navbar-item">清除绘图</div>
+        <div class="navbar-splitter"></div>
+        <div id="about" class="navbar-item">
+            <a href="https://github.com/xieguanglei/schools-map" target="_blank">关于</a>
+        </div>
     </div>
-    <div id="container" style="height: calc(100vh - 58px)"></div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"
+    <div id="dialog" class="dialog">
+        <div class="dialog-message">
+            请按照提示进行操作。
+        </div>
+        <div class="dialog-input-container">
+            <input class="input" type="text">
+        </div>
+        <div class="dialog-buttons">
+            <div class="cancel">取消</div>
+            <div class="confirm">确认</div>
+        </div>
+    </div>
+
+    <div id="container"></div>
+
+    
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/bootbox@5.0.1/dist/bootbox.min.js"></script>
+    <script src="https://unpkg.com/bootbox@5.0.1/dist/bootbox.min.js"></script> -->
 
-    <script type="text/javascript"
-        src="https://api.map.baidu.com/api?v=2.0&ak=3b2c8bc0f9070adec2985f4de6611184"></script>
+    <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=3b2c8bc0f9070adec2985f4de6611184"></script>
     <script type="text/javascript"
         src="https://api.map.baidu.com/library/DrawingManager/1.4/src/DrawingManager_min.js"></script>
-
-    <script src="https://unpkg.com/clipboard-polyfill@2.7.0/build/clipboard-polyfill.js"></script>
+    <!-- <script src="https://unpkg.com/clipboard-polyfill@2.7.0/build/clipboard-polyfill.js"></script> -->
 
     <script type="text/javascript" src="./index.js"></script>
 </body>

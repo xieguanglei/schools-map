@@ -1,0 +1,26 @@
+{
+  "name": "school-map",
+  "version": "1.0.0",
+  "devDependencies": {
+    "css-loader": "^2.1.1",
+    "express": "^4.16.4",
+    "less": "^3.9.0",
+    "less-loader": "^4.1.0",
+    "open": "^6.0.0",
+    "style-loader": "^0.23.1",
+    "ts-loader": "^5.3.3",
+    "typescript": "^3.3.4000",
+    "webpack": "^4.29.6",
+    "webpack-dev-middleware": "^3.6.1",
+    "webpack-dev-server": "^3.2.1"
+  },
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xieguanglei/schools-map.git"
+  },
+  "keywords": [],
+  "author": "xieguanglei@hotmail.com",
+  "license": "MIT",
+  "homepage": "https://github.com/xieguanglei/schools-map#readme"
+}
