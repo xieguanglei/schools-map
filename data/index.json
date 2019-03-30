@@ -2,5 +2,9 @@
     {
         "id": "hangzhou-xihu",
         "name": "杭州市西湖区"
+    },
+    {
+        "id": "hangzhou-binjiang",
+        "name": "杭州市滨江区"
     }
 ]
