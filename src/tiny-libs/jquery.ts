@@ -21,6 +21,10 @@ export class JEle {
         this.ele.appendChild(child.ele);
     }
 
+    prepend(child: JEle): void {
+        this.ele.insertBefore(child.ele, this.ele.firstElementChild);
+    }
+
     private styleDisplayCache: string;
     visible(value: boolean): void {
         const ele = this.ele as HTMLDivElement;
@@ -74,7 +78,7 @@ export function jQuery(selector: string | Element | Document) {
     if (typeof selector === 'string') {
         if (selector.trim().startsWith('<')) {
             const doc = (new DOMParser()).parseFromString(selector, 'text/html');
-            const ele = doc.firstElementChild;
+            const ele = doc.body.firstElementChild;
             if (ele) {
                 return new JEle(ele);
             }

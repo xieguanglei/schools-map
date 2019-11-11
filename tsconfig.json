@@ -9,7 +9,6 @@
         "lib": ["es6", "dom"]
     },
     "include": [
-        "src/**/*.ts",
-        "demo/*.ts"
+        "src/**/*.ts"
     ]
 }

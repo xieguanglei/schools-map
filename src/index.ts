@@ -1,18 +1,19 @@
-import "./index.less";
 import { jQuery as $ } from "./tiny-libs/jquery";
-import { DialogManager } from "./tiny-libs/dialog";
-import { DataManager } from "./data";
-import { PageManager } from "./page";
-import { MapManager } from "./map";
-import { DrawManager, IDrawData } from "./draw";
-import { Router } from "./router";
+import { DialogManager } from "./tiny-libs/dialog/dialog";
+import { DataManager } from "./managers/data";
+import { PageManager } from "./managers/page/page";
+import { MapManager } from "./managers/map";
+import { DrawManager, IDrawData } from "./managers/draw";
+import { AppRouter } from "./managers/router";
+
+import "./common.less";
 
 $(document).ready(init);
 
 async function init() {
 
-    const router = new Router();
     const dialogManager = new DialogManager();
+    
     const dataManager = new DataManager();
     const pageManager = new PageManager();
     const mapManager = new MapManager();
@@ -22,32 +23,23 @@ async function init() {
         function (data: IDrawData) { pageManager.setDrawStatus(data); }
     );
 
+    pageManager.fillRegions(await dataManager.getRegionOultines());
+
     pageManager.onStartDraw(() => drawManager.startDraw());
     pageManager.onUndoDraw(() => drawManager.undoDraw());
     pageManager.onClearDraw(() => drawManager.clearDraw());
     pageManager.onOutputDraw(() => drawManager.outputDraw());
 
-    const regions = await dataManager.regionIndexList();
-    pageManager.fillRegions(regions);
-
-    router.onInit(async (regionName?: string) => {
-        if (!regionName) {
-            const region = await dataManager.firstRegion();
-            router.route(region.id);
-        } else {
-            await initWithRegion(regionName);
+    new AppRouter(
+        await dataManager.firstRegionId(),
+        async function(regionId: string) {
+            const region = await dataManager.getRegionDetail(regionId);
+            if (region) {
+                pageManager.setCurrentRegion(region);
+                mapManager.clear();
+                mapManager.center(region.center[0], region.center[1]);
+                mapManager.showRegion(region);
+            }
         }
-    });
-
-    router.onRoute(initWithRegion);
-
-    async function initWithRegion(regionName: string) {
-        const region = await dataManager.specifiedRegion(regionName);
-        if (region) {
-            pageManager.setCurrentRegion(region);
-            mapManager.clear();
-            mapManager.center(region.center[0], region.center[1]);
-            mapManager.showRegion(region);
-        }
-    }
+    );
 }

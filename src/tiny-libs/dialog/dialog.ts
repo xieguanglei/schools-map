@@ -1,13 +1,19 @@
-import { jQuery as $, JEle } from "./jquery";
+import { jQuery as $, JEle } from "../jquery";
 
+import "./dialog.less";
+import dialogHtml from "./dialog.html";
 
 export class DialogManager {
 
-    $dialog: JEle = $('#dialog');
+    $dialog: JEle = $(dialogHtml);
     $input: JEle = this.$dialog.query('.input');
     $confirm: JEle = this.$dialog.query('.confirm');
     $cancel: JEle = this.$dialog.query('.cancel');
     $message: JEle = this.$dialog.query('.dialog-message');
+
+    constructor(){
+        $(document.body).append(this.$dialog);
+    }
 
     async prompt(message: string): Promise<string> {
 

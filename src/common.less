@@ -1,0 +1,28 @@
+@color-blue: #2f3542;
+@color-mid-blue: #3f4552;
+@color-light-blue: #57606f;
+@color-light: #f1f2f6;
+@color-golden: #eccc68;
+
+@height-header: 58px;
+@height-border: 3px;
+
+@border-style: @height-border solid @color-light-blue;
+@font-family: 'Verdana', 'Hiragino Sans GB', 'Microsoft Yahei', sans-serif;
+
+
+body {
+    margin: 0px;
+    padding: 0px;
+    font-family: @font-family;
+}
+
+#header{
+    height: @height-header; 
+    border-bottom: @border-style;
+    background: @color-blue;
+    color: @color-light;
+}
+#container{
+    height: calc(100vh - @height-header - @height-border);
+}

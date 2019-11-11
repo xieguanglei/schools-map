@@ -1,8 +1,8 @@
 import { MapManager } from "./map";
-import { DialogManager } from "./tiny-libs/dialog";
+import { DialogManager } from "../tiny-libs/dialog/dialog";
 import { ISchool } from "./data";
-import { wait } from "./tiny-libs/wait";
-import { download } from "./tiny-libs/download";
+import { wait } from "../tiny-libs/wait";
+import { download } from "../tiny-libs/download";
 
 declare const BMapLib;
 declare const BMAP_DRAWING_POLYGON;

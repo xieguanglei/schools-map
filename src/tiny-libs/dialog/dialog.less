@@ -1,0 +1,61 @@
+@import "../../common.less";
+
+@dialog-width: 400px;
+@dialog-height: 140px;
+@dialog-padding: 20px;
+@dialog-button-height: 40px;
+
+.dialog{
+    
+    display: none;
+    border-radius: 6px;
+    width: @dialog-width;
+    height: @dialog-height;
+    padding: @dialog-padding;
+    position: absolute;
+    z-index: 100;
+    left: calc(50vw - @dialog-width/2 - @dialog-padding);
+    top: calc(50vh - @dialog-height/2 - @dialog-padding);
+    border-right: @border-style;
+    border-bottom: @border-style;
+
+    background: @color-blue;
+    color: @color-light;
+
+    .dialog-message{
+        height: calc((@dialog-height - @dialog-button-height)/2);
+    }
+    .dialog-input-container{
+        height: calc((@dialog-height - @dialog-button-height)/2);
+        text-align: center;
+        input{
+            width: calc(@dialog-width - 20px);
+            line-height: 28px;
+            font-family: @font-family;
+            font-size: 16px;
+            text-align: center;
+        }
+    }
+    .dialog-buttons{
+        display: flex;
+        flex-direction: row-reverse;
+
+        .button{
+            border-radius: 5px;
+            padding: 4px 14px;
+            margin: 0 10px;
+            background: @color-light;
+            color: @color-blue;
+            cursor: pointer;
+            &:hover{
+                color: @color-golden;
+            }
+        }
+        .cancel{
+            .button;
+        }
+        .confirm{
+            .button;
+        }
+    }
+}

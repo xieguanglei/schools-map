@@ -17,6 +17,11 @@ const config = {
                 { loader: 'css-loader' },
                 { loader: 'less-loader' }
             ]
+        }, {
+            test: /\.html$/,
+            use: [
+                { loader: 'raw-loader' }
+            ]
         }]
     },
     resolve: {
