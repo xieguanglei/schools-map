@@ -44,11 +44,8 @@ export class DataManager {
             const text = await ajax(`./data/${id}.json`);
             const data = JSON.parse(text) as IRegionDetail;
             this.regionDetails.set(id, data);
-
-            return { ...regionOutlines.get(id), ...data };
         }
-
-        return null;
+        return { ...regionOutlines.get(id), ...this.regionDetails.get(id) };
     }
 
     async firstRegionId(): Promise<string> {

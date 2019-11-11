@@ -12,34 +12,34 @@ $(document).ready(init);
 
 async function init() {
 
-    const dialogManager = new DialogManager();
-    
-    const dataManager = new DataManager();
-    const pageManager = new PageManager();
-    const mapManager = new MapManager();
-    const drawManager = new DrawManager(
-        mapManager,
-        dialogManager,
-        function (data: IDrawData) { pageManager.setDrawStatus(data); }
-    );
+  const dialogManager = new DialogManager();
 
-    pageManager.fillRegions(await dataManager.getRegionOultines());
+  const dataManager = new DataManager();
+  const pageManager = new PageManager();
+  const mapManager = new MapManager();
+  const drawManager = new DrawManager(
+    mapManager,
+    dialogManager,
+    function (data: IDrawData) { pageManager.setDrawStatus(data); }
+  );
 
-    pageManager.onStartDraw(() => drawManager.startDraw());
-    pageManager.onUndoDraw(() => drawManager.undoDraw());
-    pageManager.onClearDraw(() => drawManager.clearDraw());
-    pageManager.onOutputDraw(() => drawManager.outputDraw());
+  pageManager.fillRegions(await dataManager.getRegionOultines());
 
-    new AppRouter(
-        await dataManager.firstRegionId(),
-        async function(regionId: string) {
-            const region = await dataManager.getRegionDetail(regionId);
-            if (region) {
-                pageManager.setCurrentRegion(region);
-                mapManager.clear();
-                mapManager.center(region.center[0], region.center[1]);
-                mapManager.showRegion(region);
-            }
-        }
-    );
+  pageManager.onStartDraw(() => drawManager.startDraw());
+  pageManager.onUndoDraw(() => drawManager.undoDraw());
+  pageManager.onClearDraw(() => drawManager.clearDraw());
+  pageManager.onOutputDraw(() => drawManager.outputDraw());
+
+  new AppRouter(
+    await dataManager.firstRegionId(),
+    async function (regionId: string) {
+      const region = await dataManager.getRegionDetail(regionId);
+      if (region) {
+        pageManager.setCurrentRegion(region);
+        mapManager.clear();
+        mapManager.center(region.center[0], region.center[1]);
+        mapManager.showRegion(region);
+      }
+    }
+  );
 }
